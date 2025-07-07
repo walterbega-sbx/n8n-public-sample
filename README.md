@@ -1,44 +1,36 @@
-# Projeto .NET Core
+# Projeto Java com Spring Boot
 
-Este repositório contém um projeto desenvolvido com .NET Core.
+Este repositório contém um projeto base para aplicações desenvolvidas com Java e Spring Boot.
 
 ## Pré-requisitos
 
-Para compilar e executar este projeto, você precisará ter o [.NET SDK](https://dotnet.microsoft.com/download) instalado em sua máquina.
+Antes de começar, garanta que você tenha os seguintes pré-requisitos instalados em seu ambiente de desenvolvimento:
+
+- [Java Development Kit (JDK)](https://www.oracle.com/java/technologies/downloads/) (versão 17 ou superior)
+- [Apache Maven](https://maven.apache.org/download.cgi) ou o Maven Wrapper (`mvnw`) incluso no projeto.
 
 ## Como Começar
 
-Siga os passos abaixo para configurar o ambiente de desenvolvimento e executar o projeto localmente.
+Siga os passos abaixo para clonar, construir e executar a aplicação localmente.
 
-### 1. Clone o Repositório
+1.  **Clone o repositório:**
+    ```bash
+    git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
+    cd SEU_REPOSITORIO
+    ```
 
-```bash
-git clone <URL_DO_REPOSITORIO>
-cd <NOME_DO_DIRETORIO>
-```
+2.  **Construa o projeto:**
+    Este comando irá baixar as dependências (definidas no `pom.xml`) e compilar o código-fonte.
+    ```bash
+    ./mvnw clean install
+    ```
+    *Se você não estiver usando o Maven Wrapper, utilize `mvn clean install`.*
 
-### 2. Restaure as Dependências
+3.  **Execute a aplicação:**
+    Após a construção bem-sucedida, inicie a aplicação com o seguinte comando:
+    ```bash
+    ./mvnw spring-boot:run
+    ```
+    *Ou, alternativamente, `mvn spring-boot:run`.*
 
-Navegue até o diretório raiz do projeto (onde o arquivo `.sln` ou `.csproj` está localizado) e execute o seguinte comando para baixar as dependências do NuGet:
-
-```bash
-dotnet restore
-```
-
-### 3. Compile o Projeto
-
-Para garantir que tudo está configurado corretamente e que não há erros de compilação, execute o comando de build:
-
-```bash
-dotnet build
-```
-
-### 4. Execute o Projeto
-
-Após a compilação bem-sucedida, você pode iniciar a aplicação com o comando:
-
-```bash
-dotnet run
-```
-
-A aplicação será iniciada e estará acessível no endereço `http://localhost:5000` ou `https://localhost:5001` (verifique o output do console para a URL exata).
+A aplicação estará disponível em `http://localhost:8080`.
