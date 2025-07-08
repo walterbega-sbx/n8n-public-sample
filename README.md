@@ -1,36 +1,25 @@
-# Projeto Java com Spring Boot
+# Simple Calculator
 
-Este repositório contém um projeto base para aplicações desenvolvidas com Java e Spring Boot.
+This is a simple calculator application written in Node.js.
 
-## Pré-requisitos
+## Usage
 
-Antes de começar, garanta que você tenha os seguintes pré-requisitos instalados em seu ambiente de desenvolvimento:
+To use the calculator, you can import the `calculator` object from the `calculator.js` file.
 
-- [Java Development Kit (JDK)](https://www.oracle.com/java/technologies/downloads/) (versão 17 ou superior)
-- [Apache Maven](https://maven.apache.org/download.cgi) ou o Maven Wrapper (`mvnw`) incluso no projeto.
+```javascript
+const calculator = require('./calculator');
 
-## Como Começar
+console.log(calculator.add(5, 3)); // 8
+console.log(calculator.subtract(5, 3)); // 2
+console.log(calculator.multiply(5, 3)); // 15
+console.log(calculator.divide(5, 3)); // 1.666...
+```
 
-Siga os passos abaixo para clonar, construir e executar a aplicação localmente.
+## API
 
-1.  **Clone o repositório:**
-    ```bash
-    git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
-    cd SEU_REPOSITORIO
-    ```
+The calculator object has the following methods:
 
-2.  **Construa o projeto:**
-    Este comando irá baixar as dependências (definidas no `pom.xml`) e compilar o código-fonte.
-    ```bash
-    ./mvnw clean install
-    ```
-    *Se você não estiver usando o Maven Wrapper, utilize `mvn clean install`.*
-
-3.  **Execute a aplicação:**
-    Após a construção bem-sucedida, inicie a aplicação com o seguinte comando:
-    ```bash
-    ./mvnw spring-boot:run
-    ```
-    *Ou, alternativamente, `mvn spring-boot:run`.*
-
-A aplicação estará disponível em `http://localhost:8080`.
+*   `add(a, b)`: Adds two numbers.
+*   `subtract(a, b)`: Subtracts two numbers.
+*   `multiply(a, b)`: Multiplies two numbers.
+*   `divide(a, b)`: Divides two numbers.
