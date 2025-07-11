@@ -1,57 +1,62 @@
-const calculadoraService = require('../services/calculadoraService');
 
 class CalculadoraController {
-
-    async somar(req, res) {
-        try {
-            const { num1, num2 } = req.body;
-            const resultado = await calculadoraService.somar(num1, num2);
-            res.status(200).json({ resultado });
-        } catch (error) {
-            res.status(500).json({ message: error.message });
+    soma(req, res) {
+        const { a, b } = req.body;
+        if (a === undefined || b === undefined) {
+            return res.status(400).json({ error: "É necessário fornecer dois números (a e b) no corpo da requisição." });
         }
-    }
-
-    async subtrair(req, res) {
-        try {
-            const { num1, num2 } = req.body;
-            const resultado = await calculadoraService.subtrair(num1, num2);
-            res.status(200).json({ resultado });
-        } catch (error) {
-            res.status(500).json({ message: error.message });
+        if (typeof a !== "number" || typeof b !== "number") {
+            return res.status(400).json({ error: "Os valores de 'a' e 'b' devem ser números." });
         }
+        const resultado = a + b;
+        return res.json({ resultado });
     }
-
-    async multiplicar(req, res) {
-        try {
-            const { num1, num2 } = req.body;
-            const resultado = await calculadoraService.multiplicar(num1, num2);
-            res.status(200).json({ resultado });
-        } catch (error) {
-            res.status(500).json({ message: error.message });
+    subtracao(req, res) {
+        const { a, b } = req.body;
+        if (a === undefined || b === undefined) {
+            return res.status(400).json({ error: "É necessário fornecer dois números (a e b) no corpo da requisição." });
         }
-    }
-
-    async dividir(req, res) {
-        try {
-            const { num1, num2 } = req.body;
-            const resultado = await calculadoraService.dividir(num1, num2);
-            res.status(200).json({ resultado });
-        } catch (error) {
-            res.status(500).json({ message: error.message });
+        if (typeof a !== "number" || typeof b !== "number") {
+            return res.status(400).json({ error: "Os valores de 'a' e 'b' devem ser números." });
         }
+        const resultado = a - b;
+        return res.json({ resultado });
     }
-
-    async raizQuadrada(req, res) {
-        try {
-            const { num } = req.body;
-            const resultado = await calculadoraService.raizQuadrada(num);
-            res.status(200).json({ resultado });
-        } catch (error) {
-            res.status(500).json({ message: error.message });
+    multiplicacao(req, res) {
+        const { a, b } = req.body;
+        if (a === undefined || b === undefined) {
+            return res.status(400).json({ error: "É necessário fornecer dois números (a e b) no corpo da requisição." });
         }
+        if (typeof a !== "number" || typeof b !== "number") {
+            return res.status(400).json({ error: "Os valores de 'a' e 'b' devem ser números." });
+        }
+        const resultado = a * b;
+        return res.json({ resultado });
     }
-
+    divisao(req, res) {
+        const { a, b } = req.body;
+        if (a === undefined || b === undefined) {
+            return res.status(400).json({ error: "É necessário fornecer dois números (a e b) no corpo da requisição." });
+        }
+        if (typeof a !== "number" || typeof b !== "number") {
+            return res.status(400).json({ error: "Os valores de 'a' e 'b' devem ser números." });
+        }
+        if (b === 0) {
+            return res.status(400).json({ error: "Não é possível dividir por zero." });
+        }
+        const resultado = a / b;
+        return res.json({ resultado });
+    }
+    media(req, res) {
+        const { a, b } = req.body;
+        if (a === undefined || b === undefined) {
+            return res.status(400).json({ error: "É necessário fornecer dois números (a e b) no corpo da requisição." });
+        }
+        if (typeof a !== "number" || typeof b !== "number") {
+            return res.status(400).json({ error: "Os valores de 'a' e 'b' devem ser números." });
+        }
+        const resultado = (a + b) / 2;
+        return res.json({ resultado });
+    }
 }
-
 module.exports = new CalculadoraController();
