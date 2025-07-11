@@ -1,4 +1,3 @@
-
 class CalculadoraController {
     soma(req, res) {
         const { a, b } = req.body;
@@ -56,6 +55,20 @@ class CalculadoraController {
             return res.status(400).json({ error: "Os valores de 'a' e 'b' devem ser números." });
         }
         const resultado = (a + b) / 2;
+        return res.json({ resultado });
+    }
+    raizQuadrada(req, res) {
+        const { a } = req.body;
+        if (a === undefined) {
+            return res.status(400).json({ error: "É necessário fornecer um número (a) no corpo da requisição." });
+        }
+        if (typeof a !== "number") {
+            return res.status(400).json({ error: "O valor de 'a' deve ser um número." });
+        }
+        if (a < 0) {
+            return res.status(400).json({ error: "Não é possível calcular a raiz quadrada de um número negativo." });
+        }
+        const resultado = Math.sqrt(a);
         return res.json({ resultado });
     }
 }
