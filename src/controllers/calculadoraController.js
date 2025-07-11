@@ -1,41 +1,57 @@
-const somar = (req, res) => {
-    const { valor1, valor2 } = req.body;
-    const resultado = valor1 + valor2;
-    res.send({ resultado });
-}
+const calculadoraService = require('../services/calculadoraService');
 
-const subtrair = (req, res) => {
-    const { valor1, valor2 } = req.body;
-    const resultado = valor1 - valor2;
-    res.send({ resultado });
-}
+class CalculadoraController {
 
-const multiplicar = (req, res) => {
-    const { valor1, valor2 } = req.body;
-    const resultado = valor1 * valor2;
-    res.send({ resultado });
-}
-
-const dividir = (req, res) => {
-    const { valor1, valor2 } = req.body;
-    if (valor2 === 0) {
-        res.status(400).send({ erro: "não é possível dividir por zero" });
-    } else {
-        const resultado = valor1 / valor2;
-        res.send({ resultado });
+    async somar(req, res) {
+        try {
+            const { num1, num2 } = req.body;
+            const resultado = await calculadoraService.somar(num1, num2);
+            res.status(200).json({ resultado });
+        } catch (error) {
+            res.status(500).json({ message: error.message });
+        }
     }
+
+    async subtrair(req, res) {
+        try {
+            const { num1, num2 } = req.body;
+            const resultado = await calculadoraService.subtrair(num1, num2);
+            res.status(200).json({ resultado });
+        } catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+    }
+
+    async multiplicar(req, res) {
+        try {
+            const { num1, num2 } = req.body;
+            const resultado = await calculadoraService.multiplicar(num1, num2);
+            res.status(200).json({ resultado });
+        } catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+    }
+
+    async dividir(req, res) {
+        try {
+            const { num1, num2 } = req.body;
+            const resultado = await calculadoraService.dividir(num1, num2);
+            res.status(200).json({ resultado });
+        } catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+    }
+
+    async raizQuadrada(req, res) {
+        try {
+            const { num } = req.body;
+            const resultado = await calculadoraService.raizQuadrada(num);
+            res.status(200).json({ resultado });
+        } catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+    }
+
 }
 
-const percentual = (req, res) => {
-    const { valor, percentual } = req.body;
-    const resultado = (valor * percentual) / 100;
-    res.send({ resultado });
-}
-
-module.exports = {
-    somar,
-    subtrair,
-    multiplicar,
-    dividir,
-    percentual
-}
+module.exports = new CalculadoraController();
