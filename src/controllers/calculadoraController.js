@@ -97,5 +97,17 @@ class CalculadoraController {
     `
         return res.json({ email: emailFormatado });
     }
+
+    multiplicarPorTres(req, res) {
+        const { a, b } = req.body;
+        if (a === undefined || b === undefined) {
+            return res.status(400).json({ error: "É necessário fornecer dois números (a e b) no corpo da requisição." });
+        }
+        if (typeof a !== "number" || typeof b !== "number") {
+            return res.status(400).json({ error: "Os valores de 'a' e 'b' devem ser números." });
+        }
+        const resultado = (a * b) * 3;
+        return res.json({ resultado });
+    }
 }
 module.exports = new CalculadoraController();
