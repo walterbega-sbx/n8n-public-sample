@@ -71,5 +71,16 @@ class CalculadoraController {
         const resultado = Math.sqrt(a);
         return res.json({ resultado });
     }
+    somaDeTres(req, res) {
+        const { a, b, c } = req.body;
+        if (a === undefined || b === undefined || c === undefined) {
+            return res.status(400).json({ error: "É necessário fornecer três números (a, b e c) no corpo da requisição." });
+        }
+        if (typeof a !== "number" || typeof b !== "number" || typeof c !== "number") {
+            return res.status(400).json({ error: "Os valores de 'a', 'b' e 'c' devem ser números." });
+        }
+        const resultado = (a + b + c) / 3;
+        return res.json({ resultado });
+    }
 }
 module.exports = new CalculadoraController();
