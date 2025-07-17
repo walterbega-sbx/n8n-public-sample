@@ -82,5 +82,20 @@ class CalculadoraController {
         const resultado = (a + b + c) / 3;
         return res.json({ resultado });
     }
+
+    formatarEmail(req, res) {
+        const { titulo, subtitulo, corpo } = req.body;
+        if (!titulo || !subtitulo || !corpo) {
+            return res.status(400).json({
+                error: "É necessário fornecer título, subtítulo e corpo no corpo da requisição."
+            });
+        }
+        const emailFormatado = `
+      Titulo: ${titulo}
+      Subtítulo: ${subtitulo}
+      Corpo: ${corpo}
+    `
+        return res.json({ email: emailFormatado });
+    }
 }
 module.exports = new CalculadoraController();
