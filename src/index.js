@@ -1,11 +1,15 @@
-
 const express = require('express');
 const router = express.Router();
 const calculadoraController = require('./controllers/calculadoraController');
 
-router.post('/sum', calculadoraController.sum);
-router.post('/subtract', calculadoraController.subtract);
-router.post('/multiply', calculadoraController.multiply);
-router.post('/divide', calculadoraController.divide);
+router.post('/sum', calculadoraController.soma);
+router.post('/subtract', calculadoraController.subtracao);
+router.post('/multiply', calculadoraController.multiplicacao);
+router.post('/divide', calculadoraController.divisao);
+router.post('/average', calculadoraController.media);
+router.post('/sqrt', calculadoraController.raizQuadrada);
+router.post('/sum-three', calculadoraController.somaDeTres);
+router.post('/format-email', calculadoraController.formatarEmail);
+router.post('/multiply-by-three', calculadoraController.multiplicarPorTres);
 
 module.exports = router;
