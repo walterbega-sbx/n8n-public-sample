@@ -109,5 +109,17 @@ class CalculadoraController {
         const resultado = (a * b) * 3;
         return res.json({ resultado });
     }
+
+    mediaCincoNumeros(req, res) {
+        const { a, b, c, d, e } = req.body;
+        if (a === undefined || b === undefined || c === undefined || d === undefined || e === undefined) {
+            return res.status(400).json({ error: "É necessário fornecer cinco números (a, b, c, d e e) no corpo da requisição." });
+        }
+        if (typeof a !== "number" || typeof b !== "number" || typeof c !== "number" || typeof d !== "number" || typeof e !== "number") {
+            return res.status(400).json({ error: "Todos os valores devem ser números." });
+        }
+        const resultado = (a + b + c + d + e) / 5;
+        return res.json({ resultado });
+    }
 }
 module.exports = new CalculadoraController();

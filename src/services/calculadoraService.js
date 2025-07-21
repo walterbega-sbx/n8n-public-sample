@@ -35,6 +35,14 @@ class CalculadoraService {
         return Math.sqrt(num);
     }
 
+    async mediaCincoNumeros(num1, num2, num3, num4, num5) {
+        if (isNaN(num1) || isNaN(num2) || isNaN(num3) || isNaN(num4) || isNaN(num5)) {
+            throw new Error('Todos os parâmetros devem ser números válidos.');
+        }
+        const soma = num1 + num2 + num3 + num4 + num5;
+        return soma / 5;
+    }
+
 }
 
 module.exports = new CalculadoraService();
